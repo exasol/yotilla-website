@@ -1,0 +1,21 @@
+// Variable overrides, e.g.
+// $body-bg: cyan;
+
+// See: https://getbootstrap.com/docs/5.0/customize/sass/
+
+$yotilla-blue: #798fff;
+$yotilla-blue-accent-1: #798fff;
+$yotilla-blue-accent-2: #798fff;
+$yotilla-blue-accent-3: #798fff;
+$yotilla-purple: #798fff;
+
+// Modify theme
+$primary:       $yotilla-blue !default;
+//$secondary:     $gray-600 !default;
+//$success:       $green !default;
+//$info:          $cyan !default;
+//$warning:       $yellow !default;
+//$danger:        $red !default;
+//$light:         $gray-100 !default;
+//$dark:          $gray-900 !default;
+
