@@ -4,13 +4,13 @@
 // See: https://getbootstrap.com/docs/5.0/customize/sass/
 
 $yotilla-blue: #798fff;
-$yotilla-blue-accent-1: #798fff;
-$yotilla-blue-accent-2: #798fff;
+$yotilla-blue-accent-1: rgb(57,75,155);
+$yotilla-blue-accent-2: rgb(82,88,212);
 $yotilla-blue-accent-3: #798fff;
-$yotilla-purple: #798fff;
+$yotilla-purple: rgb(189,118,252);
 
 // Modify theme
-$primary:       $yotilla-blue !default;
+$primary:       $yotilla-blue-accent-2 !default;
 //$secondary:     $gray-600 !default;
 //$success:       $green !default;
 //$info:          $cyan !default;
