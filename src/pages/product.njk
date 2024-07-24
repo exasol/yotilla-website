@@ -7,29 +7,75 @@ eleventyNavigation:
   order: 1
 ---
 
-<div class="container px-4 py-5">
+{# Hero #}
+<div class="container px-4 pb-3">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="{{ '/assets/images/yotilla-teaser.jpg' | url}}" class="d-block mx-lg-auto img-fluid" alt="Yotilla Teaser Video" width="700" height="500" />
+    <div class="col">
+      <video
+          id="my-player"
+          class="video-js"
+          style="width: 700px; height: 394px;"
+          controls
+          preload="auto"
+          poster="{{ '/assets/video/yotilla-teaser-thumbnail.png' | url}}"
+          data-setup='{}'>
+        <source src="{{ '/assets/video/yotilla-teaser.mp4'}}" type="video/mp4"></source>
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web   browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
+        </p>
+      </video>
     </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Data Warehouse Automation with Yotilla</h1>
+    <div class="col">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Complete Data Warehouse Automation</h1>
       <p class="lead">
-        Yotilla provides a Data Warehouse that adapts at the same pace that business changes. 
+        Yotilla is a service that automatically provides a Data Warehouse that adapts at the same pace that business changes. 
         Unlike legacy Data Warehouses, it enables rapid decision making and reduced maintenance costs.
       </p>
-      <!--
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+        <a class="btn btn-primary btn-lg px-4 me-md-2" href="#product-features">Product features</a>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Book a demo</button>
       </div>
-      -->
     </div>
   </div>
 </div>
 
+{# What is Yotilla? #}
+<div class="container px-4 py-3" id="product-features">
+  <h2 class="pb-2 border-bottom">Product Features</h2>
 
-<div class="container px-4 py-5" id="icon-grid">
+  <div class="row align-items-center my-5">
+    <div class="col-md-7">
+      <h2 class="fw-normal lh-1">Conceptual Model-driven workflow</h2>
+      <p class="lead">
+        The unique automation approach of Yotilla is based on a user-defined Conceptual Model. 
+        The Conceptual Model describes the sources of the Data Warehouse, the business objects of the sources and the relationships between the business objects.
+        Users define the Conceptual Model with 3 simple steps.
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="{{'/assets/images/product/c-workflow.gif' | url}}" alt="The 3 steps of Yotilla's Conceptual Model-driven workflow" class="img-fluid" />
+    </div>
+  </div>
+
+  <div class="row align-items-center my-5">
+    <div class="col-md-7 order-md-2">
+      <h2 class="fw-normal lh-1">Fully automated data modelling.<br /><small class="text-muted">No Data Vault know-how required!</small></h2>
+      <p class="lead">
+        The user-defined Conceptual Model provides a blueprint from which Yotilla derives all the required logical and physical data models of the Data Warehouse. 
+        This means that the Raw Vault and the Business Vault are also fully automated. 
+        As a result, Data Vault know-how is not required!
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="{{'/assets/images/product/automated-data-modelling.png' | url}}" alt="Yotilla automates all logical and physical data models of a Data Warehouse" class="img-fluid" />
+    </div>
+  </div>  
+</div>
+
+{# Conceptual Model benefits #}
+
+<div class="container px-4 py-5">
   <h2 class="pb-2 border-bottom">Complete Data Warehouse Automation based on a Conceptual Model</h2>
 
   <p class="lead">
