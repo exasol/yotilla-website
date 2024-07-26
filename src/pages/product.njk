@@ -8,7 +8,7 @@ eleventyNavigation:
 ---
 
 {# Hero #}
-<div class="container px-4 pb-3">
+<div class="container px-4 pb-4">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col">
       <video
@@ -27,7 +27,7 @@ eleventyNavigation:
       </video>
     </div>
     <div class="col">
-      <h1 class="display-7 fw-bold text-body-emphasis lh-1">Complete Data Warehouse Automation</h1>
+      <h1 class="display-7 fw-bold text-body-emphasis lh-1">Full Data Warehouse Automation</h1>
       <h2 class="text-body-emphasis lh-1"><span class="text-muted">No Data Vault know-how required</span></h2>
       <p class="lead">
         Yotilla is a service that automatically provides a Data Warehouse that adapts at the same pace that business changes. 
@@ -42,18 +42,18 @@ eleventyNavigation:
 </div>
 
 {# What is Yotilla? #}
-<div class="container px-4 py-3">
-  <h2 class="pb-2 border-bottom">Discover the unique automation approach</h2>
+<div class="container px-4 py-4">
+  <h2 class="pb-2 border-bottom" id="unique-automation-approach">Discover the unique automation approach</h2>
 
   <div class="row align-items-center my-5">
     <div class="col-md-7">
-      <h2 class="fw-normal lh-1">Conceptual Model-driven workflow</h2>
+      <h2 class="fw-normal lh-1" id="conceptual-model">Conceptual Model-driven workflow</h2>
       <p class="lead">
         The unique automation approach of Yotilla is based on a user-defined Conceptual Model. 
         The Conceptual Model describes the sources of the Data Warehouse, the business objects of the sources and the relationships between the business objects.
-        Users define the Conceptual Model with 3 simple steps.
+        <mark>Users define the Conceptual Model with 3 simple steps.</mark>
       </p>
-      <a class="icon-link" href="#product-demo">Watch Use Case Demo</a>
+      <a class="icon-link" href="#product-demo">Watch Use Case Demo <i class="bi bi-chevron-right"></i></a>
     </div>
     <div class="col-md-5">
       <img src="{{'/assets/images/product/conceptual-model-workflow.png' | url}}" alt="The 3 steps of Yotilla's Conceptual Model-driven workflow" class="img-fluid" />
@@ -62,12 +62,13 @@ eleventyNavigation:
 
   <div class="row align-items-center my-5">
     <div class="col-md-7 order-md-2">
-      <h2 class="fw-normal lh-1">Fully automated data modelling.<br /><small class="text-muted">No Data Vault know-how required!</small></h2>
+      <h2 class="fw-normal lh-1" id="automated-data-modelling">Fully automated data modelling.<br /><small class="text-muted">No Data Vault know-how required!</small></h2>
       <p class="lead">
         The user-defined Conceptual Model provides a blueprint from which Yotilla derives all the required logical and physical data models of the Data Warehouse. 
         This means that the Raw Vault and the Business Vault are also fully automated. 
-        As a result, Data Vault know-how is not required!
+        <mark>As a result, Data Vault know-how is not required!</mark>
       </p>
+      <a class="icon-link" href="#architecture">Explore the architecture of a Data Warehouse automated with Yotilla <i class="bi bi-chevron-right"></i></a>
     </div>
     <div class="col-md-5">
       <img src="{{'/assets/images/product/automated-data-modelling.png' | url}}" alt="Yotilla automates all logical and physical data models of a Data Warehouse" class="img-fluid" />
@@ -76,12 +77,13 @@ eleventyNavigation:
 
   <div class="row align-items-center my-5">
     <div class="col-md-7">
-      <h2 class="fw-normal lh-1">Measuarble benefits for customers</h2>
+      <h2 class="fw-normal lh-1" id="customer-benefits">Measuarble benefits for customers</h2>
       <p class="lead">
         Yotilla customers benefit from 9x faster first results and 14x faster adoption of changes compared to legacy Data Warehousing.
         The unique automation approach requires no Data Vault know-how and the high level of automation drastically reduces the number of Data Engineers required.
-        <span class="highlight">Yotilla thus reduces costs by at least 50%.</span>
+        <mark>Yotilla thus reduces costs by at least 50%.</mark>
       </p>
+      <a class="icon-link" href="{{'/pages/pricing' | url}}">Explore pricing <i class="bi bi-chevron-right"></i></a>
     </div>
     <div class="col-md-5">
       <img src="{{'/assets/images/product/customer-benefits.png' | url}}" alt="Yotilla automates all logical and physical data models of a Data Warehouse" class="img-fluid" />
@@ -93,7 +95,7 @@ eleventyNavigation:
       <h2 class="fw-normal lh-1">Supported databases</h2>
       <p class="lead">
         You own your data! Yotilla follows the ELT approach so that data never flows through Yotilla. 
-        Instead, Yotilla generates SQL statements and lets the database do the heavy lifting.
+        Instead, Yotilla generates SQL statements and <mark>lets the database do the heavy lifting</mark>.
       </p>
       <p class="lead">
         Currently, we support <a href="https://aws.amazon.com/redshift/" target="_blank">AWS Redshift</a>, <a href="https://www.exasol.com" target="_blank">Exasol</a> and <a href="https://www.snowflake.com" target="_blank">Snowflake</a>.
@@ -103,101 +105,147 @@ eleventyNavigation:
       <img src="{{'/assets/images/product/supported-databases.png' | url}}" alt="Yotilla automates all logical and physical data models of a Data Warehouse" class="img-fluid" />
     </div>
   </div>
-
 </div>
 
+{% macro productFeature(featureTitle, text='Some text about the feature', icon='bi-question', href='#' ) %}
+  <div class="col d-flex align-items-start">
+    <i class="text-body-secondary flex-shrink-0 me-3 bi {{icon }} fs-3"></i>
+    <div>
+      <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">{{ featureTitle }}</h3>
+      <p>{{ text }}</p>
+      <!--<a href="{{ href }}" class="icon-link">Explore feature <i class="bi bi-chevron-right"></i></a> -->
+    </div>
+  </div>
+{% endmacro %}
+
 {# Feature Grid #}
-<div class="container px-4 py-3" id="product-features">
+<div class="container px-4 py-4" id="product-features">
   <h2 class="pb-2 border-bottom">Product Features</h2>
 
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#collection"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Consolidate attributes of different sources</h3>
-        <p>Consolidate data from several sources into one business object. Define the leading source per drag&drop.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#crop"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Separate multiple objects in a source</h3>
-        <p>Map all business objects of a source within the Conceptual Model. Yotilla will automatically store and integrate them separately.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+        'Consolidate attributes of different sources', 
+        'Consolidate data from several sources into one business object. Define the leading source per drag&drop.',
+        'bi-collection',
+        '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#clock-history"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Load and inscription timelines</h3>
-        <p>Yotilla automatically stores the data of the business objects with a load and an iscription timeline. The inscription timeline must be provided by the source.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Separate multiple objects in a source', 
+      'Map all business objects of a source within the Conceptual Model. Yotilla will automatically store and integrate them separately.',
+      'bi-crop',
+      '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#calculator"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Business logic with formulas</h3>
-        <p>Define business logic as a scalar formula that uses business objects and attributes directly. As the relationships of the business objects are known in the Conceptual Model, the implementation of the formula can be fully automated.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Load and inscription timelines', 
+      'Yotilla automatically stores the data of the business objects with a load and an iscription timeline. The inscription timeline must be provided by the source.',
+      'bi-clock-history',
+      '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#table"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Customised business logic</h3>
-        <p>Define customised business logic with a view. The attributes required for the view can be defined in advance. Yotilla automatically provides the data basis for your business logic.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Business logic with formulas', 
+      'Define business logic as a scalar formula that uses business objects and attributes directly. As the relationships of the business objects are known in the Conceptual Model, the implementation of the formula can be fully automated.',
+      'bi-calculator',
+      '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#pencil-square"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Early transformations</h3>
-        <p>Define source specific transformations to homogenise attributes (e.g. data type format corrections) as a simple formula. These transformations are applied automatically with every load.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Customised business logic', 
+      'Define customised business logic with a view. The attributes required for the view can be defined in advance. Yotilla automatically provides the data basis for your business logic.',
+      'bi-table',
+      '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#database-up"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Integrated Workflow Engine.</h3>
-        <p>Yotilla automatically generates all required load and transformation processes. The built-in Workflow Engine orchestrates and executes the loading processes automatically in the correct order.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Early transformations', 
+      'Define source specific transformations to homogenise attributes (e.g. data type format corrections) as a simple formula. These transformations are applied automatically with every load.',
+      'bi-pencil-square',
+      '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#database-up"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Full Loads and Delta Loads</h3>
-        <p>Yotilla supports Full Loads with delete detection and Delta Loads. Source with Delta Loads can provide Soft Deletes.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Integrated Workflow Engine', 
+      'Yotilla automatically generates all required load and transformation processes. The built-in Workflow Engine orchestrates and executes the loading processes automatically in the correct order.',
+      'bi-gear',
+      '#'
+      ) 
+    }}
 
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3 feature-list-icon"><use xlink:href="#calendar-week"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Scheduler</h3>
-        <p>Yotilla can load your sources based on a defined schedule per source.</p>
-        <a href="#" class="icon-link">Explore feature <svg class="bi"><use xlink:href="#arrow-right-circle"></use></svg></a>
-      </div>
-    </div>
+    {{ productFeature(
+      'Full Loads and Delta Loads', 
+      'Yotilla supports Full Loads with delete detection and Delta Loads. Source with Delta Loads can provide Soft Deletes.',
+      'bi-database-up',
+      '#'
+      ) 
+    }}
+
+    {{ productFeature(
+      'Scheduler', 
+      'Yotilla supports Full Loads with delete detection and Delta Loads. Source with Delta Loads can provide Soft Deletes.',
+      'Yotilla can load your sources based on a defined schedule per source.',
+      '#'
+      ) 
+    }}
 
   </div>
-    
 </div>
 
-<div class="container px-4 py-3" id="product-demo">
+{# Architecture #}
+<div class="text-bg-dark">
+  <div class="container px-4 py-4">
+    <h2 class="pb-2 border-bottom" id="architecture">The architecture of a modern Data Warehouse with Yotilla</h2>
+
+    <div class="row py-3">
+      <div class="col">
+        <img src="{{ '/assets/images/product/yotilla-architecture.png' | url}}" class="img-fluid" alt="Yotilla Architecture" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p class="lead">
+          Yotilla enables you to integrate your sources into a modern Data Warehouse fully automatically.
+          Yotilla currently supports the modern analytical databases <a href="https://aws.amazon.com/redshift/" target="_blank" class="icon-link">AWS Redshift</a>, <a href="https://www.exasol.com" target="_blank">Exasol</a> and <a href="https://www.snowflake.com" target="_blank">Snowflake</a> as data platforms.
+          The modern Data Warehouse consists of the following three layers: Staging, Core and Data Mart.
+        </p>
+      </div>
+    </div>
+
+    <dl class="row lead">
+      <dt class="col-lg-2 col-sm-2 p-0">Staging</dt>
+      <dd class="col-lg-10 col-sm-10">The Staging Layer decouples the Data Warehouse from your sources. It's basically a 1:1 copy of the data. The data ingestion can be supported by the Data Ingestion tool of your choice.</dd>
+
+      <dt class="col-lg-2 col-sm-2 p-0">Core</dt>
+      <dd class="col-lg-10 col-sm-10">The Core Layer is the heart of the Data Warehouse. It contains all the history of the data but also integrates and homogenised your source data into the mapped business objects. Modern Data Warehouses leverage the Data Vault modelling approach consisting of a Raw Vaul and Core Vault. With Yotilla, all required data models for both the Raw Vault and the Business Vault are generated fully automatically. Further, all required ELT processes are generated fully automatically.</dd>
+
+      <dt class="col-lg-2 col-sm-2 p-0">Data Mart</dt>
+      <dd class="col-lg-10 col-sm-10">The Data Mart Layer provides a copy of selected business objects of the Core Layer modelled in a way that fast analytical queries can be executed by analytics downstream. The required data models of the Data Mart Layer as well as all loading processes are fully automated by Yotilla.</dd>
+
+      <dt class="col-lg-2 col-sm-2 p-0">Workflow</dt>
+      <dd class="col-lg-10 col-sm-10">The Workflow Engine by Yotilla schedules or starts all loading processes in the right order at the specified time so that data flows consistently from Staging through the Core Layer and finally into the Data Mart Layer.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="container px-4 py-4" id="product-demo">
   <h2 class="pb-2 border-bottom">Product Demo</h2>
+
+  <div class="row">
+    <div class="col">
+      <p class="lead">
+        Watch a product demo of a exemplary reatiling use case. Within the demo we showcase how to define the Conceptual Model, extend the Conceptual Model with business formulas and finally define a Data Mart with Yotilla.
+      </p>
+    </div>
+  </div>
 
   <div class="row align-items-center my-3">
     <div class="col">
@@ -339,76 +387,4 @@ eleventyNavigation:
     </div>
 
 </div>
-
-<div class="container px-4 py-5">
-  <h2 class="pb-2 border-bottom">Measurable benefits for customers</h2>
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
-    <div class="feature col">
-      <h3 class="fs-4 text-body-emphasis">9x faster first results</span></h3>
-      <p>Yotilla customers benefit from 9x faster first results compared to legacy Data Warehousing.</p>
-    </div>
-    <div class="feature col">
-      <h3 class="fs-4 text-body-emphasis">14x faster adoption of changes</h3>
-      <p>Yotilla customers are 14x faster in delivering changes to the Data Warehouse.</p>
-    </div>
-    <div class="feature col">
-      <h3 class="fs-4 text-body-emphasis">>50% cost savings</h3>
-      <p>Yotilla customers save at least 50% of the costs for their Data Warehouse.</p>
-    </div>
-    <div class="feature col">
-      <h3 class="fs-4 text-body-emphasis">0 Data Vault experts</h3>
-      <p>The unique automation approach of Yotilla does not require expensive and rare Data Vault know-how.</p>
-    </div>
-  </div>
-</div>
 #}
-
-{# Icons #}
-
-<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-  <symbol id="check" viewBox="0 0 16 16">
-    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
-  </symbol>
-  <symbol id="1-circle" viewBox="0 0 16 16">
-    <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z"/>
-  </symbol>
-  <symbol id="boxes" viewBox="0 0 16 16">
-    <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
-  </symbol>
-  <symbol id="arrow-right-circle" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-  </symbol>
-  <symbol id="crop" viewBox="0 0 16 16">
-    <path d="M3.5.5A.5.5 0 0 1 4 1v13h13a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2H3.5a.5.5 0 0 1-.5-.5V4H1a.5.5 0 0 1 0-1h2V1a.5.5 0 0 1 .5-.5m2.5 3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4H6.5a.5.5 0 0 1-.5-.5"/>
-  </symbol>
-  <symbol id="collection" viewBox="0 0 16 16">
-    <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
-  </symbol>
-  <symbol id="clock-history" viewBox="0 0 16 16">
-    <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"/>
-    <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
-    <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
-  </symbol>
-  <symbol id="grid-3x3" viewBox="0 0 16 16">
-    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5zM1.5 1a.5.5 0 0 0-.5.5V5h4V1zM5 6H1v4h4zm1 4h4V6H6zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5zm1 0v4h4v-4zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11zm0-1h4V6h-4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11zm-1 0V1H6v4z"/>
-  </symbol>
-  <symbol id="calculator" viewBox="0 0 16 16">
-    <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-    <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-  </symbol>
-  <symbol id="database-up" viewBox="0 0 16 16">
-    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0"/>
-    <path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4"/>
-  </symbol>
-  <symbol id="calendar-week" viewBox="0 0 16 16">
-    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-  </symbol>
-  <symbol id="pencil-square" viewBox="0 0 16 16">
-    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>  
-  </symbol>
-  <symbol id="table" viewBox="0 0 16 16">
-    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z"/>
-  </symbol>
-</svg>

@@ -3,110 +3,77 @@ layout: base
 meta:
   lang: en
   title: Pricing
-  description: The page explain the pricing of Yotilla
+  description: "Flexible pricing that focuses on your Return On Investment. Pay for what gives you value: Data Mart attributes."
 eleventyNavigation:
   key: Pricing
   order: 2
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-  <symbol id="check" viewBox="0 0 16 16">
-    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
-  </symbol>
-</svg>
 
-<div class="px-4 py-3 my-3 text-center">
+<div class="container px-4 py-3 my-3 text-center">
   <h1 class="display-5 fw-bold text-body-emphasis">Pricing</h1>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Flexible pricing that focuses on your Return On Investment.</p>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <a class="btn btn-primary btn-lg px-4 gap-3" href="">Contact us</a>
+  <h2>Pay for what gives you value: Data Mart attributes</h2>
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        Flexible pricing that focuses on your Return On Investment.
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#modal-contact-us">Contact us</button>
+      </div>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+        <a class="icon-link" href="https://aws.amazon.com/marketplace/pp/prodview-irz3tf6c7owr4" target="_blank">Show Yotilla in the AWS Marketplace <i class="bi bi-box-arrow-up-right"></i></a>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 px-4 py-3 text-center">
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal">Small</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">€ 25.000 <small class="text-body-secondary fw-light">p.a.</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>500 Data Mart attributes</li>
-          <li>1 Yotilla Instance</li>
-          <li>4,17€ / additional Data Mart attribute</li>
-        </ul>
-      </div>
+{% macro pricePackage(tier='Tier', price='20.000€', dma='500', pricePerDMA='4,17€', instances='1' ) %}
+<div class="col">
+  <div class="card mb-4 rounded-3 shadow-sm">
+    <div class="card-header py-3">
+      <h4 class="my-0 fw-normal">{{ tier }}</h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">{{price}} <small class="text-body-secondary fw-light">p.a.</small></h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>{{dma}} Data Mart attributes</li>
+        <li><small>{{instances}} Yotilla Instance(s)</small></li>
+        <li><small>{{pricePerDMA}} / additional Data Mart attribute</small></li>
+        <li><small>Unlimited seats / users</small></li>
+      </ul>
     </div>
   </div>
+</div>
+{% endmacro %}
 
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal">Medium</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">€ 45.000 <small class="text-body-secondary fw-light">p.a.</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>1.000 Data Mart attributes</li>
-          <li>1 Yotilla Instance</li>
-          <li>3,75€ / additional Data Mart attribute</li>
-        </ul>
-      </div>
-    </div>
+<div class="container px-4 py-3 text-center">
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+
+    {{pricePackage('Small', '25.000€', '500', '4,17€', '1')}}
+    {{pricePackage('Medium', '45.000€', '1.000', '3,75€', '1')}}
+    {{pricePackage('Large', '75.000€', '2.000', '3,13€', '2')}}
+    {{pricePackage('X-Large', '100.000€', '3.500', '2,38€', '3')}}
+
   </div>
-
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal">Large</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">€ 75.000 <small class="text-body-secondary fw-light">p.a.</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>2.000 Data Mart attributes</li>
-          <li>2 Yotilla Instance</li>
-          <li>3,13€ / additional Data Mart attribute</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal">X-Large</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">€ 100.000 <small class="text-body-secondary fw-light">p.a.</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>3.500 Data Mart attributes</li>
-          <li>3 Yotilla Instance</li>
-          <li>2,38€ / additional Data Mart attribute</li>
-        </ul>
-      </div>
-    </div>
-  </div>  
 </div>
 
-<div class="container px-4 pb-3">
+<div class="container px-4 py-3">
   <h2 class="border-bottom mb-3">Metering</h2>
 
-  <p>
-    The unit in which consumption is measured is the total number of deployed Data Mart attributes per month.
-  </p>
-  <p>
-    The number of deployed Data Mart attributes for an Yotilla instance per month is the maximum of deployed Data Mart attributes over all environments (e.g., development and production) of the Yotilla instance per month.
-  </p>
-  <p>
-    The total number of deployed Data Mart attributes is the sum of deployed Data Mart attributes over all instances per month.
-  </p>
-  <p>
-    Each package includes a fixed number of deployed Data Mart attributes. Metering of the additional deployed Data Mart attributes takes place when the number of deployed Data Mart attributes exceeds the number of included deployed Data Mart attributes.
-  </p>
-  <p>
-    In addition, each package includes a fixed number of Yotilla instances. Metering of the additional Yotilla instances only takes place when the number of started Yotilla instances exceeds the number of included Yotilla instances.
-  </p>
+  <div class="row">
+    <div class="col">
+      <p>
+        The unit in which consumption is measured is the total number of deployed Data Mart attributes per month.
+        The number of deployed Data Mart attributes for an Yotilla instance per month is the maximum of deployed Data Mart attributes over all environments (e.g., development and production) of the Yotilla instance per month.
+        The total number of deployed Data Mart attributes is the sum of deployed Data Mart attributes over all instances per month.
+      </p>
+      <p>
+        Each package includes a fixed number of deployed Data Mart attributes. Metering of the additional deployed Data Mart attributes takes place when the number of deployed Data Mart attributes exceeds the number of included deployed Data Mart attributes.
+      </p>
+      <p>
+        In addition, each package includes a fixed number of Yotilla instances. Metering of the additional Yotilla instances only takes place when the number of started Yotilla instances exceeds the number of included Yotilla instances.
+      </p>
+    </div>
+  </div>
 </div>

@@ -4,11 +4,11 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 // Base setup for builds, needed for og tags and correct image paths
 // (mostly for github pages deployment, see build-deploy.yaml)
 const baseUrl = process.env.BASE_URL || 'http://localhost:8080';
-// e.g. 'https://mandrasch.github.io/'
+
 const pathPrefix = process.env.PATH_PREFIX || '/';
 // e.g. '/11ty-plain-boostrap5/'
-console.log('baseUrl is set to ...', baseUrl);
-console.log('pathPrefix is set to ...', pathPrefix);
+console.log('baseUrl:', baseUrl);
+console.log('pathPrefix:', pathPrefix);
 
 // will be accessible in all templates via
 // see "eleventyConfig.addGlobalData("site", globalData);"" below
@@ -75,6 +75,9 @@ module.exports = function (eleventyConfig) {
   // Copy transformed images
   // TODO: this is executed too soon? imgs not there?
   eleventyConfig.addPassthroughCopy("img/");
+
+  // Put robots.txt in root
+  eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
 
   // Important for watch: Eleventy will not add a watch for files or folders that
   // are in .gitignore (--> dist/),unless setUseGitIgnore is turned off. See this chapter:

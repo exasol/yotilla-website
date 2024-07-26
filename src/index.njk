@@ -8,25 +8,68 @@ eleventyNavigation:
   key: Home
 ---
 
-<div class="container my-5">
-  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-      <h1 class="display-8 fw-bold lh-1 text-body-emphasis">
-        Automate Data Warehouses<br /><small class="text-muted">at the same pace as business changes</small>
+
+<div class="container">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5 px-4">
+    <div class="col-10 col-sm-8 col-lg-5">
+      <img src="{{ '/assets/images/home-hero.png' | url }}" class="d-block mx-lg-auto img-fluid" alt="The " width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-7">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+        Automate Data Warehouses
+        <br /><small class="text-muted fs-2">at the same pace as business changes</small>
       </h1>
       <p class="lead">
-        Yotilla is a service that fully automates a Data Warehouse.
-        New sources and business logic are integrated into the Data Warehouse in just a few steps.
-        Expensive experts and Data Vault know-how are no longer required.
+        Yotilla is a service that automatically provides a Data Warehouse that adapts at the same pace that business changes. 
+        Unlike other Data Warehouse Automation solutions on the market, Yotilla does not require any Data Vault know-how or Data Modelling to automate the Data Warehouse.
+
       </p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-        <a class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href="{{ '/pages/product/' | url }}">How does it work?</a>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Watch a product demo</button>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary btn-lg px-4 gap-3" href="{{ '/pages/product' | url}}">Explore product</a>
+        <a class="btn btn-outline-secondary btn-lg px-4" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marco-naetlitz-yotilla/30min'});return false;">Book a demo</a>
       </div>
     </div>
-    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden">
-        <img src="{{ '/assets/images/index-hero-screenshot.png' | url }}" alt="Screenshot of the Yotilla user-interface" width="594">
+  </div>
+</div>
+
+{% macro uniqueFeature(featureTitle, text='Some text about the feature', icon='bi-question', href='#' ) %}
+  <div class="feature col">
+    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+      <i class="bi {{icon}}"></i>
     </div>
+    <h3 class="fs-4 text-body-emphasis">{{featureTitle}}</h3>
+    <p class="lead">{{text}}</p>
+    <a href="{{href}}" class="icon-link">Discover more <i class="bi bi-chevron-right"></i></a>
+  </div>
+{% endmacro %}
+
+
+
+<div class="container px-4 py-3">
+  <h2 class="pb-2 border-bottom">Why Yotilla?</h2>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    
+    {{uniqueFeature(
+        'Create or modernize your Data Warehouses', 
+        'Integrate your sources into a modern Data Warehouse in the Cloud or On Premise automated by Yotilla.', 
+        'bi-magic', '/pages/product/#conceptual-model' | url
+        )
+    }}
+
+    {{uniqueFeature(
+      'No Data Vault know-how required', 
+      'Yotilla automates all required logical and physical data models based on a user-defined Conceptual Model. This includes a fully automated Raw Vault and Business Vault as well as the Data Marts.', 
+      'bi-layers', '/pages/product/#automated-data-modelling' | url
+      )
+    }}
+
+    {{uniqueFeature(
+      'Be 14x faster and save 50% costs', 
+      'The unique automation approach of Yotilla has measurable benefits for customers: 9x faster for initial results, 14x faster adoption of changes and more than 50% cost savings.', 
+      'bi-rocket-takeoff', '/pages/product/#customer-benefits' | url
+      )
+    }}
+
   </div>
 </div>
 
