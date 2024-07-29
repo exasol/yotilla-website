@@ -35,7 +35,7 @@ eleventyNavigation:
       </p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a class="btn btn-primary btn-lg px-4 me-md-2" href="#product-features">Product features</a>
-        <a class="btn btn-outline-secondary btn-lg px-4" href="#">Book a demo</a>
+        <a class="btn btn-outline-secondary btn-lg px-4" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marco-naetlitz-yotilla/30min'});return false;">Book a demo</a>
       </div>
     </div>
   </div>
@@ -56,7 +56,11 @@ eleventyNavigation:
       <a class="icon-link" href="#product-demo">Watch Use Case Demo <i class="bi bi-chevron-right"></i></a>
     </div>
     <div class="col-md-5">
-      <img src="{{'/assets/images/product/conceptual-model-workflow.png' | url}}" alt="The 3 steps of Yotilla's Conceptual Model-driven workflow" class="img-fluid" />
+      <ul class="list-unstyled feature-list">
+        <li class="py-2 fs-4"><i class="bi bi-1-circle"></i> Map business objects to their sources</li>
+        <li class="py-2 fs-4"><i class="bi bi-2-circle"></i> Define business logic with formulas</li>
+        <li class="py-2 fs-4"><i class="bi bi-3-circle"></i> Define facts and dimensions for the Data Marts</li>
+      </ul>
     </div>
   </div>
 
@@ -86,7 +90,12 @@ eleventyNavigation:
       <a class="icon-link" href="{{'/pages/pricing' | url}}">Explore pricing <i class="bi bi-chevron-right"></i></a>
     </div>
     <div class="col-md-5">
-      <img src="{{'/assets/images/product/customer-benefits.png' | url}}" alt="Yotilla automates all logical and physical data models of a Data Warehouse" class="img-fluid" />
+      <ul class="list-unstyled feature-list">
+        <li class="py-2 fs-4"><span class="badge text-bg-primary">9x</span> faster for the first results</li>
+        <li class="py-2 fs-4"><span class="badge text-bg-primary">14x</span> faster adoption of changes</li>
+        <li class="py-2 fs-4"><span class="badge text-bg-primary">>50%</span> cost savings</li>
+        <li class="py-2 fs-4"><span class="badge text-bg-primary">No</span> Data Vault know-how required</li>
+      </ul>
     </div>
   </div>
 
@@ -214,15 +223,14 @@ eleventyNavigation:
       <div class="col">
         <p class="lead">
           Yotilla enables you to integrate your sources into a modern Data Warehouse fully automatically.
-          Yotilla currently supports the modern analytical databases <a href="https://aws.amazon.com/redshift/" target="_blank" class="icon-link">AWS Redshift</a>, <a href="https://www.exasol.com" target="_blank">Exasol</a> and <a href="https://www.snowflake.com" target="_blank">Snowflake</a> as data platforms.
           The modern Data Warehouse consists of the following three layers: Staging, Core and Data Mart.
         </p>
       </div>
     </div>
-
+ 
     <dl class="row lead">
       <dt class="col-lg-2 col-sm-2 p-0">Staging</dt>
-      <dd class="col-lg-10 col-sm-10">The Staging Layer decouples the Data Warehouse from your sources. It's basically a 1:1 copy of the data. The data ingestion can be supported by the Data Ingestion tool of your choice.</dd>
+      <dd class="col-lg-10 col-sm-10">The Staging Layer decouples the Data Warehouse from your sources by ingesting the data into the Data Platform. The data ingestion can be supported by the Data Ingestion tool of your choice.</dd>
 
       <dt class="col-lg-2 col-sm-2 p-0">Core</dt>
       <dd class="col-lg-10 col-sm-10">The Core Layer is the heart of the Data Warehouse. It contains all the history of the data but also integrates and homogenised your source data into the mapped business objects. Modern Data Warehouses leverage the Data Vault modelling approach consisting of a Raw Vaul and Core Vault. With Yotilla, all required data models for both the Raw Vault and the Business Vault are generated fully automatically. Further, all required ELT processes are generated fully automatically.</dd>
@@ -233,6 +241,7 @@ eleventyNavigation:
       <dt class="col-lg-2 col-sm-2 p-0">Workflow</dt>
       <dd class="col-lg-10 col-sm-10">The Workflow Engine by Yotilla schedules or starts all loading processes in the right order at the specified time so that data flows consistently from Staging through the Core Layer and finally into the Data Mart Layer.</dd>
     </dl>
+    
   </div>
 </div>
 

@@ -35,7 +35,7 @@ eleventyNavigation:
       <h4 class="my-0 fw-normal">{{ tier }}</h4>
     </div>
     <div class="card-body">
-      <h1 class="card-title pricing-card-title">{{price}} <small class="text-body-secondary fw-light">p.a.</small></h1>
+      <h1 class="card-title pricing-card-title">{{price}} <small class="text-body-secondary fw-light fs-6">/month</small></h1>
       <ul class="list-unstyled mt-3 mb-4">
         <li>{{dma}} Data Mart attributes</li>
         <li><small>{{instances}} Yotilla Instance(s)</small></li>
@@ -50,13 +50,51 @@ eleventyNavigation:
 <div class="container px-4 py-3 text-center">
   <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
 
-    {{pricePackage('Small', '25.000€', '500', '4,17€', '1')}}
-    {{pricePackage('Medium', '45.000€', '1.000', '3,75€', '1')}}
-    {{pricePackage('Large', '75.000€', '2.000', '3,13€', '2')}}
-    {{pricePackage('X-Large', '100.000€', '3.500', '2,38€', '3')}}
+    {{pricePackage('Small', '2.080€', '500', '4,17€', '1')}}
+    {{pricePackage('Medium', '3.750€', '1.000', '3,75€', '1')}}
+    {{pricePackage('Large', '6.250€', '2.000', '3,13€', '2')}}
+    {{pricePackage('X-Large', '8.330€', '3.500', '2,38€', '3')}}
 
   </div>
 </div>
+
+<div class="container px-4 py-3">
+  <h2 class="border-bottom mb-3">Return on Investment calculator</h2>
+
+  <form id="roi-calculator">
+    <div class="row">
+      <div class="col">
+          <h3 class="fs-4 text-body-emphasis">Size of your Data Warehouse</h3>
+          <div class="mb-3">
+            <label for="data-mart-attributes" class="form-label">How many Data Mart attributes?</label>
+            <input type="number" class="form-control" id="data-mart-attributes" aria-describedby="dataMartAttributeHelp" value="1200">
+            <div id="dataMartAttributeHelp" class="form-text">A Data Mart attribute (e.g. Product Price) is only counted once if it's part of several facts or dimensions.</div>
+          </div>
+          <div class="mb-3">
+            <label for="data-mart-attributes" class="form-label">How many Data Engineers?</label>
+            <input type="number" class="form-control" id="data-mart-attributes" aria-describedby="dataMartAttributeHelp" value="3">
+            <div id="dataMartAttributeHelp" class="form-text">How many Data Engineers are involved building the Data Warehouse.</div>
+          </div>
+      </div>
+      <div class="col">
+        <h3 class="fs-4 text-body-emphasis">Cost comparison</h3>
+        <div class="mb-3">
+          <label for="select-yotilla-tier" class="form-label">Yotilla Tier</label>
+          <select class="form-select" aria-label="Yotilla Tier select" id="select-yotilla-tier">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+            <option value="x-large">X-Large</option>
+          </select>
+        </div>
+        <ul>
+          <li>Costs per month: 3.750€</li>
+          <li>Cost savings: 58%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>
 
 <div class="container px-4 py-3">
   <h2 class="border-bottom mb-3">Metering</h2>

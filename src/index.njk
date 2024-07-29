@@ -8,11 +8,22 @@ eleventyNavigation:
   key: Home
 ---
 
+<style>
+  ul.feature-list i.bi {
+    color:var(--bs-primary);
+  }
+</style>
 
 <div class="container">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5 px-4">
     <div class="col-10 col-sm-8 col-lg-5">
-      <img src="{{ '/assets/images/home-hero.png' | url }}" class="d-block mx-lg-auto img-fluid" alt="The " width="700" height="500" loading="lazy">
+      <ul class="list-unstyled feature-list">
+        <li class="py-2 fs-4"><i class="bi bi-check-circle"></i> Create or modernize your Data Warehouse</li>
+        <li class="py-2 fs-4"><i class="bi bi-check-circle"></i> Fully automated data modelling</li>
+        <li class="py-2 fs-4"><i class="bi bi-check-circle"></i> Fully automated data integration and ETL</li>
+        <li class="py-2 fs-4"><i class="bi bi-check-circle"></i> No Data Vault know-how required</li>
+      </ul>
+      {# <img src="{{ '/assets/images/home-hero.png' | url }}" class="d-block mx-lg-auto img-fluid" alt="The " width="700" height="500" loading="lazy"> #}
     </div>
     <div class="col-lg-7">
       <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
@@ -21,7 +32,7 @@ eleventyNavigation:
       </h1>
       <p class="lead">
         Yotilla is a service that automatically provides a Data Warehouse that adapts at the same pace that business changes. 
-        Unlike other Data Warehouse Automation solutions on the market, Yotilla does not require any Data Vault know-how or Data Modelling to automate the Data Warehouse.
+        Unlike other Data Warehouse Automation solutions on the market, Yotilla fully automates all required data models based on a user-defined Conceptual Model and therefor requires no Data Vault know-how.
 
       </p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -50,7 +61,7 @@ eleventyNavigation:
   <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
     
     {{uniqueFeature(
-        'Create or modernize your Data Warehouses', 
+        'Create or modernize your Data Warehouse', 
         'Integrate your sources into a modern Data Warehouse in the Cloud or On Premise automated by Yotilla.', 
         'bi-magic', '/pages/product/#conceptual-model' | url
         )
