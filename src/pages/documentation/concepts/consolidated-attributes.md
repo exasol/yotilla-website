@@ -1,5 +1,6 @@
 ---
-layout: documentation
+layout: base
+sidebar: true
 meta:
   title: "Consolidated Attributes"
 eleventyNavigation:

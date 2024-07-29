@@ -8,8 +8,8 @@ eleventyNavigation:
 ---
 
 {# Hero #}
-<div class="container px-4 pb-4">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+<div class="container px-4 py-4">
+  <div class="row flex-lg-row-reverse align-items-center g-5">
     <div class="col">
       <video
           id="yotilla-teaser-player"
@@ -17,8 +17,10 @@ eleventyNavigation:
           style="width: 700px; height: 394px;"
           controls
           preload="auto"
+          autoplay="true"
+          muted="true"
           poster="{{ '/assets/video/yotilla-teaser-thumbnail.png' | url}}"
-          data-setup='{}'>
+          data-setup="{}">
         <source src="{{ '/assets/video/yotilla-teaser.mp4' | url }}" type="video/mp4"></source>
         <p class="vjs-no-js">
           To view this video please enable JavaScript, and consider upgrading to a
@@ -201,6 +203,7 @@ eleventyNavigation:
       'Scheduler', 
       'Yotilla supports Full Loads with delete detection and Delta Loads. Source with Delta Loads can provide Soft Deletes.',
       'Yotilla can load your sources based on a defined schedule per source.',
+      'bi-calendar-week',
       '#'
       ) 
     }}

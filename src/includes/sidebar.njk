@@ -1,0 +1,6 @@
+<div class="card mt-4 text-bg-light mb-3">
+    <div class="card-header"><h5>Topics</h5></div>
+    <div class="card-body">
+        {{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml | safe }}
+    </div>
+</div>

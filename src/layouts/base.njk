@@ -28,11 +28,21 @@
     {% include "header.njk" %}
 
     <main id="main">
-      {{ content | safe }}
-      
-      <div class="container py-4">
-        
+      {%- set hasTopics = (collections.all | eleventyNavigation(eleventyNavigation.key)).length -%}
+      {% if sidebar and hasTopics %}
+      <div class="container px-4">
+        <div class="row">
+          <div class="col-lg-8">
+            {{ content | safe }}
+          </div>
+          <div class="col-lg-4">
+            {% include 'sidebar.njk' %}
+          </div>
+        </div>
       </div>
+      {% else %}
+        {{ content | safe }}
+      {% endif %}
     </main>
 
     {% include "footer.njk" %}
@@ -48,33 +58,23 @@
 
           <div class="modal-body p-5 pt-0">
             <p class="lead">
-              Can't find what you are looking for? We're just an email away!
+              Can't find what you are looking for? <small>We're just an email away!</small>
             </p>
-            <form action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="d58695d2-5f74-4407-8c37-cb86c1a24952">
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-              <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control rounded-3" id="floatingInput" placeholder="My Name" required>
-                <label for="floatingInput">Name</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control rounded-3" id="floatingInput" placeholder="My Company">
-                <label for="floatingInput">Company</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Email address</label>
-              </div>
-              
-              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Contact us</button>
-              <small class="text-body-secondary">By clicking Send, you agree to the <a href="#">terms of use</a>.</small>
-            </form>
+            <p>
+              Please send us a message to <a href="" id="mailtoLink">address</a>
+            </p>
           </div>
         </div>
       </div>
     </div>
 
+    <script type="text/javascript">
+      var encEmail = 'Y29udGFjdEB5b3RpbGxhLmNvbQ=='
+      const mailtoLink = document.getElementById("mailtoLink")
+      const emailAddress = atob(encEmail)
+      mailtoLink.setAttribute("href", "mailto:".concat(emailAddress))
+      mailtoLink.innerHTML = emailAddress
+    </script>
     <script type="text/javascript" src="{{ '/dist/app.js' | url }}"></script>
   </body>
 </html>
