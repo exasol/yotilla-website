@@ -47,7 +47,7 @@
 
     {% include "footer.njk" %}
 
-    {# Book a demo modal #}
+    {# Contact Us #}
     <div class="modal fade bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal-contact-us" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content rounded-4 shadow">
@@ -58,11 +58,33 @@
 
           <div class="modal-body p-5 pt-0">
             <p class="lead">
-              Can't find what you are looking for? <small>We're just an email away!</small>
+              Can't find what you are looking for?
             </p>
             <p>
-              Please send us a message to <a href="" id="mailtoLink">address</a>
+              We are just an email away!
             </p>
+            <p>
+              Please send us a message to <a href="" id="contactMailLink">address</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# Get a quote #}
+    <div class="modal fade bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal-quote" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Contact sales</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <p class="lead">
+              We are happy to discuss your business needs and the sizing of your Data Warehouse!
+            </p>
+            <p>
+              Please send us a message to <a href="" id="quoteMailLink">address</a> to contact sales.
           </div>
         </div>
       </div>
@@ -70,10 +92,16 @@
 
     <script type="text/javascript">
       var encEmail = 'Y29udGFjdEB5b3RpbGxhLmNvbQ=='
-      const mailtoLink = document.getElementById("mailtoLink")
-      const emailAddress = atob(encEmail)
-      mailtoLink.setAttribute("href", "mailto:".concat(emailAddress))
-      mailtoLink.innerHTML = emailAddress
+
+      function setEmail(tagId) {
+        const mailtoLink = document.getElementById(tagId)
+        const emailAddress = atob(encEmail)
+        mailtoLink.setAttribute("href", "mailto:".concat(emailAddress))
+        mailtoLink.innerHTML = emailAddress
+      }
+
+      setEmail("contactMailLink")
+      setEmail("quoteMailLink")
     </script>
     <script type="text/javascript" src="{{ '/dist/app.js' | url }}"></script>
   </body>

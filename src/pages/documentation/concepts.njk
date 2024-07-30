@@ -1,0 +1,21 @@
+---
+layout: base
+sidebar: true
+meta:
+  title: Concepts
+eleventyNavigation:
+  key: Concepts
+  parent: Documentation
+---
+
+<div class="container py-4">
+  <h1 id="temporality">Concepts</h1>
+  <p class="lead">
+    This section explains the main concepts in Yotilla and describes the overall architecture and data flow.
+  </p>
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom">Topics of this section</h2>
+  {{ collections.all | eleventyNavigation(eleventyNavigation.key) | eleventyNavigationToHtml | safe }}
+</div>

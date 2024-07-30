@@ -1,0 +1,24 @@
+---
+layout: base
+sidebar: true
+meta:
+  title: Environments
+eleventyNavigation:
+  key: Environments
+  parent: Concepts
+---
+
+<div class="container py-4">
+    <h1 id="temporality">Environments</h1>
+    <p>
+        Yotilla has two separate configuration environments: Development and Production. The development environment is typically used for modeling and testing the data warehouse configuration. The changes can then be deployed to the production environment.
+    </p>
+    <p>
+        Changes to the conceptual model, such as defining business objects and business attributes, mapping sources, and defining business formulas can only be carried out in the development environment.
+    </p>
+    <p>
+        To switch between the two environments, use the dropdown menu as shown in the screenshot below:
+    </p>
+    <img src="{{ '/assets/images/documentation/ui-environments.png' | url}}" class="img-fluid" alt="The Environment Switch in the Yotilla User Interface" />
+</div>
+

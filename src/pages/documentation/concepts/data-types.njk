@@ -1,0 +1,264 @@
+---
+layout: base
+sidebar: true
+meta:
+  title: "Data Types"
+eleventyNavigation:
+  key: DataTypes
+  parent: Concepts
+---
+
+<div class="container py-4" id="mc-main-content">
+  <h1 id="DataTypes">Data Types</h1>
+  <p class="lead">
+    This section describes the implementation and limitations for different source column data types in the target technologies supported by Yotilla.
+  </p>
+  <p>
+    Select the target technology of the underlying data platform:
+  </p>
+  <ul>
+    <li><a href="#exasol">Exasol data types</a></li>
+    <li><a href="#snowflake">Snowflake data types</a></li>
+    <li><a href="#redshift">Redshift data types</a></li>
+  </ul>
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom" id="exasol">Exasol data types</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Exasol data type</th>
+        <th>Aliases</th>
+        <th>Yotilla generic data type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>boolean</code></td>
+        <td><code>bool</code></td>
+        <td><code>BOOLEAN</code></td>
+      </tr>
+      <tr>
+        <td><code>char</code></td>
+        <td><code>character</code>, <code>nchar</code></td>
+        <td><code>FIXED_CHARACTER</code></td>
+      </tr>
+      <tr>
+        <td><code>date</code></td>
+        <td></td>
+        <td><code>DATE</code></td>
+      </tr>
+      <tr>
+        <td><code>decimal</code></td>
+        <td><code>bigint</code>, <code>dec</code>, <code>int</code>, <code>integer</code>, <code>number</code>, <code>numeric</code>, <code>shortint</code>, <code>smallint</code>, <code>tinyint</code></td>
+        <td><code>NUMERIC</code></td>
+      </tr>
+      <tr>
+        <td><code>double precision</code></td>
+        <td><code>double</code>, <code>float</code>, <code>number</code>, <code>real</code></td>
+        <td><code>FLOAT</code></td>
+      </tr>
+      <tr>
+        <td><code>geometry</code></td>
+        <td></td>
+        <td><code>GEOMETRY</code></td>
+      </tr>
+      <tr>
+        <td><code>hashtype</code></td>
+        <td></td>
+        <td><code>HASHTYPE</code></td>
+      </tr>
+      <tr>
+        <td><code>interval day to second</code></td>
+        <td></td>
+        <td><code>INTERVAL</code></td>
+      </tr>
+      <tr>
+        <td><code>interval year to month</code></td>
+        <td></td>
+        <td><code>INTERVAL</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp</code></td>
+        <td></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp with local time zone</code></td>
+        <td></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>varchar</code></td>
+        <td><code>character large object</code>, <code>character varying</code>, <code>clob</code>, <code>long varchar</code>, <code>nvarchar</code>, <code>nvarchar2</code>, <code>varchar2</code></td>
+        <td><code>CHARACTER</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom" id="snowflake">Snowflake data types</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Snowflake data type</th>
+        <th>Aliases</th>
+        <th>Yotilla generic data type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>number</code></td>
+        <td><code>numeric</code>, <code>decimal</code>, <code>dec</code>, <code>int</code>, <code>integer</code>, <code>bigint</code>, <code>smallint</code>, <code>tinyint</code>, <code>byteint</code></td>
+        <td><code>NUMERIC</code></td>
+      </tr>
+      <tr>
+        <td><code>float</code></td>
+        <td><code>double</code>, <code>double precision</code>, <code>real</code></td>
+        <td><code>FLOAT</code></td>
+      </tr>
+      <tr>
+        <td><code>float4</code></td>
+        <td></td>
+        <td><code>FLOAT</code></td>
+      </tr>
+      <tr>
+        <td><code>float8</code></td>
+        <td></td>
+        <td><code>FLOAT</code></td>
+      </tr>
+      <tr>
+        <td><code>varchar</code></td>
+        <td><code>string</code>, <code>text</code>, <code>nvarchar</code>, <code>nvarchar2</code>, <code>char varying</code>, <code>nchar varying</code>, <code>char</code>, <code>character</code>, <code>nchar</code></td>
+        <td><code>CHARACTER</code></td>
+      </tr>
+      <tr>
+        <td><code>binary</code></td>
+        <td><code>varbinary</code></td>
+        <td><code>BINARY</code></td>
+      </tr>
+      <tr>
+        <td><code>boolean</code></td>
+        <td></td>
+        <td><code>BOOLEAN</code></td>
+      </tr>
+      <tr>
+        <td><code>date</code></td>
+        <td></td>
+        <td><code>DATE</code></td>
+      </tr>
+      <tr>
+        <td><code>time</code></td>
+        <td></td>
+        <td><code>TIME</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp_ltz</code></td>
+        <td><code>timestampltz</code>, <code>timestamp with local time zone</code></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp_ntz</code></td>
+        <td><code>datetime</code>, <code>timestamp</code>, <code>timestampntz</code>, <code>timestamp without time zone</code></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp_tz</code></td>
+        <td><code>timestamptz</code>, <code>timestamp with time zone</code></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>variant</code></td>
+        <td></td>
+        <td><code>VARIANT</code></td>
+      </tr>
+      <tr>
+        <td><code>object</code></td>
+        <td></td>
+        <td><code>OBJECT</code></td>
+      </tr>
+      <tr>
+        <td><code>array</code></td>
+        <td></td>
+        <td><code>ARRAY</code></td>
+      </tr>
+      <tr>
+        <td><code>geography</code></td>
+        <td></td>
+        <td><code>GEOGRAPHY</code></td>
+      </tr>
+      <tr>
+        <td><code>geometry</code></td>
+        <td></td>
+        <td><code>GEOMETRY</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom" id="redshift">Redshift data types</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Redshift data type</th>
+        <th>Aliases</th>
+        <th>Yotilla generic data type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>boolean</code></td>
+        <td><code>bool</code></td>
+        <td><code>BOOLEAN</code></td>
+      </tr>
+      <tr>
+        <td><code>char</code></td>
+        <td><code>character</code>, <code>nchar</code>, <code>bpchar</code></td>
+        <td><code>FIXED_CHARACTER</code></td>
+      </tr>
+      <tr>
+        <td><code>date</code></td>
+        <td></td>
+        <td><code>DATE</code></td>
+      </tr>
+      <tr>
+        <td><code>double precision</code></td>
+        <td><code>float8</code></td>
+        <td><code>FLOAT</code></td>
+      </tr>
+      <tr>
+        <td><code>integer</code></td>
+        <td><code>int</code>, <code>int4</code>, <code>integer4</code></td>
+        <td><code>INTEGER</code></td>
+      </tr>
+      <tr>
+        <td><code>real</code></td>
+        <td><code>float4</code></td>
+        <td><code>FLOAT</code></td>
+      </tr>
+      <tr>
+        <td><code>smallint</code></td>
+        <td><code>int2</code></td>
+        <td><code>SMALLINT</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp</code></td>
+        <td><code>timestamp without time zone</code></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>timestamp with time zone</code></td>
+        <td><code>timestamptz</code></td>
+        <td><code>DATETIME</code></td>
+      </tr>
+      <tr>
+        <td><code>varchar</code></td>
+        <td><code>character varying</code>, <code>nvarchar</code>, <code>text</code></td>
+        <td><code>CHARACTER</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

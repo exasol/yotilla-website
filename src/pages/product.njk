@@ -7,28 +7,64 @@ eleventyNavigation:
   order: 1
 ---
 
+<style>
+  .embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .embed-responsive::before {
+    display: block;
+    content: '';
+  }
+
+  .embed-responsive-16by9::before {
+    padding-top: 56.25%;
+  }
+
+  .embed-responsive .embed-responsive-item,
+  .embed-responsive embed,
+  .embed-responsive iframe,
+  .embed-responsive object,
+  .embed-responsive video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
 {# Hero #}
 <div class="container px-4 py-4">
   <div class="row flex-lg-row-reverse align-items-center g-5">
-    <div class="col">
-      <video
-          id="yotilla-teaser-player"
-          class="video-js"
-          style="width: 700px; height: 394px;"
-          controls
-          preload="auto"
-          autoplay="true"
-          muted="true"
-          poster="{{ '/assets/video/yotilla-teaser-thumbnail.png' | url}}"
-          data-setup="{}">
-        <source src="{{ '/assets/video/yotilla-teaser.mp4' | url }}" type="video/mp4"></source>
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to a
-          web   browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
-        </p>
-      </video>
+    <div class="col-lg-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <video
+            id="yotilla-teaser-player"
+            class="video-js embed-responsive-item"
+            {# style="width: 700px; height: 394px;" #}
+            style="width: 100% !important; height: auto !important;"
+            controls
+            preload="auto"
+            autoplay="true"
+            muted="true"
+            poster="{{ '/assets/video/yotilla-teaser-thumbnail.png' | url}}"
+            data-setup="{}">
+          <source src="{{ '/assets/video/yotilla-teaser.mp4' | url }}" type="video/mp4"></source>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web   browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
+          </p>
+        </video>
+      </div>
     </div>
-    <div class="col">
+    <div class="col-lg-6">
       <h1 class="display-7 fw-bold text-body-emphasis lh-1">Full Data Warehouse Automation</h1>
       <h2 class="text-body-emphasis lh-1"><span class="text-muted">No Data Vault know-how required</span></h2>
       <p class="lead">
@@ -52,10 +88,10 @@ eleventyNavigation:
       <h2 class="fw-normal lh-1" id="conceptual-model">Conceptual Model-driven workflow</h2>
       <p class="lead">
         The unique automation approach of Yotilla is based on a user-defined Conceptual Model. 
-        The Conceptual Model describes the sources of the Data Warehouse, the business objects of the sources and the relationships between the business objects.
-        <mark>Users define the Conceptual Model with 3 simple steps.</mark>
+        The Conceptual Model describes business objects, their relationships and how they are mapped to the sources. 
+        <mark>Users define the Conceptual Model with three simple steps.</mark>
       </p>
-      <a class="icon-link" href="#product-demo">Watch Use Case Demo <i class="bi bi-chevron-right"></i></a>
+      <a class="icon-link" href="#product-demo">Watch a use case demo <i class="bi bi-chevron-right"></i></a>
     </div>
     <div class="col-md-5">
       <ul class="list-unstyled feature-list">
@@ -105,7 +141,7 @@ eleventyNavigation:
     <div class="col-md-7 order-md-2">
       <h2 class="fw-normal lh-1">Supported databases</h2>
       <p class="lead">
-        You own your data! Yotilla follows the ELT approach so that data never flows through Yotilla. 
+        You own your data! Yotilla follows the ELT approach, your data never flows through Yotilla. 
         Instead, Yotilla generates SQL statements and <mark>lets the database do the heavy lifting</mark>.
       </p>
       <p class="lead">
@@ -145,7 +181,7 @@ eleventyNavigation:
 
     {{ productFeature(
       'Separate multiple objects in a source', 
-      'Map all business objects of a source within the Conceptual Model. Yotilla will automatically store and integrate them separately.',
+      'Map all business objects of a source in the Conceptual Model. Yotilla automatically stores them separately but integrated in the Data Warehouse.',
       'bi-crop',
       '#'
       ) 
@@ -153,7 +189,7 @@ eleventyNavigation:
 
     {{ productFeature(
       'Load and inscription timelines', 
-      'Yotilla automatically stores the data of the business objects with a load and an iscription timeline. The inscription timeline must be provided by the source.',
+      'Yotilla automatically stores the data of the business objects with a load and an inscription timeline. The inscription timeline must be provided by the source.',
       'bi-clock-history',
       '#'
       ) 
@@ -161,15 +197,15 @@ eleventyNavigation:
 
     {{ productFeature(
       'Business logic with formulas', 
-      'Define business logic as a scalar formula that uses business objects and attributes directly. As the relationships of the business objects are known in the Conceptual Model, the implementation of the formula can be fully automated.',
+      'Define business logic as a scalar formula that uses business objects and attributes directly. As the relationships of the business objects in the Conceptual Model are known, Yotilla fully automates the implementation of your formulas.',
       'bi-calculator',
       '#'
       ) 
     }}
 
     {{ productFeature(
-      'Customised business logic', 
-      'Define customised business logic with a view. The attributes required for the view can be defined in advance. Yotilla automatically provides the data basis for your business logic.',
+      'Customized business logic', 
+      'Define the attributes required for customized business logic and implement them with a view. Yotilla automatically provides the necessary data for your business logic without you having to access the Data Vault tables directly.',
       'bi-table',
       '#'
       ) 
@@ -177,7 +213,7 @@ eleventyNavigation:
 
     {{ productFeature(
       'Early transformations', 
-      'Define source specific transformations to homogenise attributes (e.g. data type format corrections) as a simple formula. These transformations are applied automatically with every load.',
+      'Use source-specific transformations to homogenize attributes with a simple formula (e.g. to standardize data type formats). These transformations are automatically applied with every load and integrate data from multiple sources.',
       'bi-pencil-square',
       '#'
       ) 
@@ -193,7 +229,7 @@ eleventyNavigation:
 
     {{ productFeature(
       'Full Loads and Delta Loads', 
-      'Yotilla supports Full Loads with delete detection and Delta Loads. Source with Delta Loads can provide Soft Deletes.',
+      'Yotilla supports Full Loads with delete detection and Delta Loads. Sources with Delta Loads can provide Soft Deletes.',
       'bi-database-up',
       '#'
       ) 
@@ -224,8 +260,7 @@ eleventyNavigation:
     <div class="row">
       <div class="col">
         <p class="lead">
-          Yotilla enables you to integrate your sources into a modern Data Warehouse fully automatically.
-          The modern Data Warehouse consists of the following three layers: Staging, Core and Data Mart.
+          Yotilla integrates your sources into the layers of a modern Data Warehouse:
         </p>
       </div>
     </div>
@@ -248,12 +283,14 @@ eleventyNavigation:
 </div>
 
 <div class="container px-4 py-4" id="product-demo">
-  <h2 class="pb-2 border-bottom">Product Demo</h2>
+  <h2 class="pb-2 border-bottom">Use Case Demo</h2>
 
   <div class="row">
     <div class="col">
       <p class="lead">
-        Watch a product demo of a exemplary reatiling use case. Within the demo we showcase how to define the Conceptual Model, extend the Conceptual Model with business formulas and finally define a Data Mart with Yotilla.
+        Watch the video showing all the steps involved in automating a data warehouse completely: 
+        Starting with the definition of the business objects of the Conceptual Model and their assignment to the sources, through the addition of business logic to the definition of the data marts.
+        The video shows the Conceptual Model of a typical retailer.
       </p>
     </div>
   </div>
@@ -277,125 +314,3 @@ eleventyNavigation:
     </div>
   </div>
 </div>
-
-
-{# Conceptual Model benefits 
-
-<div class="container px-4 py-5">
-  <h2 class="pb-2 border-bottom">Complete Data Warehouse Automation based on a Conceptual Model</h2>
-
-  <p class="lead">
-      Other Data Warehouse Automation approaches require extensive Data Vault know-how and expensive expertise. 
-      The hoped-for increase in efficiency is often not achieved.
-      Data Warehouse Automation, on the other hand, becomes very efficient when Data Vault modelling is fully automated and is no longer required.
-  </p>
-
-  <h3 class="fw-bold fs-4">Highest level of automation</h3>
-
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-3">
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Automated data modelling</h3>
-        <p>
-          If the Data Warehouse is automated based on the Conceptual Model, the physical AND logical data modelling for Data Vault can be derived completely. 
-          Data Vault expertise is no longer required.
-        </p>
-      </div>
-    </div>
-
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Fully automated Data Vault</h3>
-        <p>
-          Yotilla's conceptual model not only contains an mapping of the business objects to the sources, but also the necessary business logic, which is why Yotilla fully automates both the Raw Vault and the Business Vault.
-        </p>
-      </div>
-    </div>
-
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-5 text-body-emphasis">Automated ETL processes</h3>
-        <p>
-          As all dependencies are known in Yotilla's Conceptual Model, it is sufficient to start the ETL process for the respective source when new data is delivered. 
-            All further process steps are automatically generated, orchestrated and executed by Yotilla.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="fw-bold fs-4">Simple data integration</h3>
-    
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-3">  
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Consolidated attributes from multiple sources</h3>
-        <p>
-          Business objects and attributes are mapped to data sources in the Conceptual Model. 
-          Attributes whose data originates from multiple sources are automatically identified and consolidated.
-        </p>
-      </div>
-    </div>
-
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Early transformations</h3>
-        <p>
-          Source-specific transformations homogenise attributes that originate from multiple sources, e.g. if data types or formats differ. The specified transformations are applied automatically and integrate the data.
-        </p>
-      </div>
-    </div>
-
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Separating multiple business objects within a source</h3>
-        <p>
-          A source can contain data from several business objects. Based on the relationships between the business objects in the conceptual model, these can be automatically stored separately and integrated into the data warehouse.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="fw-bold fs-4">Business logic</h3>
-
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-3">
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Customised business logic as part of the Conceptual Model</h3>
-        <p>
-          The required business objects and attributes can be specified in the Conceptual Model for customised business logic.
-          This enables Yotilla to provide the required data within a view that can be accessed to define the customised busines logic with SQL and without data vault expertise.
-        </p>
-      </div>
-    </div>
-
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Business logic as formula</h3>
-        <p>
-          Simple business logic can also be specified as a scalar formula that uses business objects and attributes directly. 
-          As the relationships of the business objects are known in the Conceptual Model, the implementation of the formula can be fully automated.
-        </p>
-      </div>
-    </div>
-
-    <div class="col d-flex align-items-start">
-      <svg class="text-body-secondary flex-shrink-0 me-3" width="2em" height="2em"><use xlink:href="#1-circle"></use></svg>
-      <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Automated Data Marts</h3>
-        <p>
-          In the Conceptual Model, define which attributes are to be provided as a dimension or as a fact in the data mart of the data warehouse.
-          As all dependencies of the generated Data Vault model are known, the Data Marts are also generated automatically.
-        </p>
-      </div>
-    </div>
-
-</div>
-#}
