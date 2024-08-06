@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yotilla - Consolidated Attributes</title>
+
+    <link rel="stylesheet" href="/yotilla-website/dist/app.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    
+    <link href="//vjs.zencdn.net/8.3.0/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <script>window.HELP_IMPROVE_VIDEOJS = false;</script>
+
+    <!-- Calendly link widget begin -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <!-- Calendly link widget end -->
+
+    
+
+
+<meta name="description" content="Automate Data Warehouses at the same pace as business changes">
+
+
+<meta property="og:site_name" content="Yotilla">
+<meta property="og:title" content="Consolidated Attributes">
+<meta property="og:description" content="Automate Data Warehouses at the same pace as business changes">
+<meta property="og:url" content="https://exasol.github.io/yotilla-website/pages/documentation/concepts/consolidated-attributes/">
+<meta property="og:locale" content="">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Consolidated Attributes">
+<meta name="twitter:description" content="Automate Data Warehouses at the same pace as business changes">
+
+
+<link rel="icon" href="/yotilla-website/assets/favicons/favicon.ico">
+
+
+
+  </head>
+
+  <body>
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <header class="pb-2 mb-3 border-bottom fixed-top text-bg-dark">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a href="/yotilla-website/" class="d-flex align-items-center text-dark text-decoration-none">
+          <img src="/yotilla-website/assets/images/logo-light.svg" class="yotilla-logo" alt="Yotilla Logo" />
+        </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto"><li class="nav-item">
+            <a class="nav-link"
+                href="/yotilla-website/"
+                >
+                Home
+            </a></li><li class="nav-item">
+            <a class="nav-link"
+                href="/yotilla-website/pages/product/"
+                >
+                Product
+            </a></li><li class="nav-item">
+            <a class="nav-link"
+                href="/yotilla-website/pages/pricing/"
+                >
+                Pricing
+            </a></li><li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle"
+                href="/yotilla-website/pages/documentation/"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="dropdown-641197">
+                Documentation <span class="visually-hidden">Toggle Dropdown Documentation</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown-641197">
+                <li>
+                    <a class="dropdown-item" href="/yotilla-website/pages/documentation/"><!-- Documentation-->Overview</a>
+                </li><li>
+    <a class="dropdown-item" href=" /yotilla-website/pages/documentation/concepts/">
+    Concepts
+    </a>
+</li></ul></li></ul>
+
+<a class="btn btn-outline-secondary" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marco-naetlitz-yotilla/30min'});return false;">Book a demo</a>
+
+
+</div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+    <main id="main">
+        
+<div class="container py-4">
+  <h1 id="DataTypes">Consolidated Attributes</h1>
+  <p class="lead">
+  Business objects and attributes are mapped to the sources in the conceptual model.
+  Attributes whose data comes from multiple sources are automatically identified and consolidated if they have the sama business name.
+  These attributes are called <strong>Consolidated Attributes</strong>.
+  </p>
+  <p>
+    Yotilla only allows one source column in each source to be mapped to a business attribute of a business object. You can however map source columns in different sources to the same business attribute name. This will create a Consolidated Attribute. When a consolidated attribute is created, Yotilla will render a formula that consolidates the values of all the participating mapped source attributes.
+  </p>
+  <p>
+    The order of the participating source attributes in the consolidated attribute determine the priority. If the first read source attribute has a null value, the value of the next attribute in the order will be used. The default order of the participating source attributes is the order in which they were defined. The order can be changed on the Source page, on the Catalog page, and using TinML.
+  </p>
+
+  <div class="callout callout-info" markdown='1'>
+    <h3>Limitations</h3>
+    <ul>
+      <li>The data types of the mapped source columns of a consolidated attribute must be compatible. If the data types are not compatible, the consolidated attribute and its containing business object will be invalid. For more information, see Data Type Compatibility.</li>
+      <li>Columns from Custom Views cannot participate in a consolidated attribute. Consolidated attributes may however be used in the <code>USES</code> clauses of a custom view.</li>
+      <li>A consolidated attribute cannot also be a business key. If you define a consolidated attribute as a business key, the consolidation will be removed and the attribute will be automatically renamed.</li>
+    </ul>
+    <p>See also `DEFINE CONSOLIDATION` in the TinML reference documentation.</p>
+
+  </div>
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom">Create a Consolidated Attribute</h2>
+  <p>
+    Yotilla will automatically create a consolidated attribute if a source attribute with a name that matches an existing source attribute is detected during a source metadata scan.
+    You can also manually create a consolidated attribute by renaming an existing source attribute so that it matches another source attribute within the business object.
+  </p>
+  <p>
+    In the following example, the sources `ARTICLE` and `PRODUCT` both have a source column named `PRODUCT_NAME`.
+    Both columns have been mapped to the attribute Article Name in the business object Product.
+    Yotilla has therefore defined this as a consolidated attribute.
+  </p>
+  <figure class="figure">
+    <img src="/yotilla-website/assets/images/documentation/ca-example-1a.png" class="img-fluid figure-img" alt="Source columns of source ARTICLE" />
+    <figcaption class="figure-caption">Source columns of source <code>ARTICLE</code></figcaption>
+  </figure>
+  <figure class="figure">
+    <img src="/yotilla-website/assets/images/documentation/ca-example-2.png" class="img-fluid figure-img" alt="Source columns of source PRODUCT" />
+    <figcaption class="figure-caption">Source columns of source <code>PRODUCT</code></figcaption>
+  </figure>
+  <p>
+    Both sources also have a source column named `NET_PRICE`. These columns have been mapped to different attribute names and are therefore not consolidated.
+  </p>
+  <p>
+    To view and change the order of the participating source attributes in the consolidated attribute, click on the icon.
+    In the dialog window that opens, click and drag the attributes to change the order.
+  </p>
+  <figure class="figure">
+    <img src="/yotilla-website/assets/images/documentation/ca-change-order.png" class="img-fluid" alt="Change the priority of the consolidation with drag&drop" />
+    <figcaption class="figure-caption">Change the priority of the consolidation with drag&drop</figcaption>
+  </figure>
+</div>
+
+
+<div class="container py-4">
+  <h2 class="border-bottom">Remove a Consolidated Attribute</h2>
+  <p>
+    To remove (split) a consolidated attribute, rename the participating source attributes so that they have different attribute names.
+    Yotilla will automatically remove the consolidation.
+  </p>
+  <p>
+    In the following example, the attribute Article Name has been renamed to Product Name for the second source.
+  </p>
+  
+  <figure class="figure">
+    <img src="/yotilla-website/assets/images/documentation/ca-example-1b.png" class="img-fluid figure-img" alt="Split the consolidated attribute 'Product Name' by renaming it to 'Article Name'" />
+    <figcaption class="figure-caption">Split the consolidated attribute 'Product Name' by renaming it to 'Article Name'</figcaption>
+  </figure>
+  
+  <p>
+    The attributes are therefore no longer consolidated.
+  </p>
+  
+  
+  <figure class="figure">
+    <img src="/yotilla-website/assets/images/documentation/ca-example-2b.png" class="img-fluid figure-img" alt="Source columns of source PRODUCT" />
+    <figcaption class="figure-caption">Source columns of source <code>PRODUCT</code></figcaption>
+
+  </figure>
+
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom">Data Type Compatibility</h2>
+  <p>The base technical data type of all source columns that are part of a consolidated attribute must be compatible, otherwise the consolidated attribute and the containing business object will be invalid.</p>
+  <p>The precision and scale attributes in the data type do not have to match, but the resulting precision must be within the limits allowed by the target database.</p>
+  <p>For example:</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Source column 1 data type</th>
+        <th>Source column 2 data type</th>
+        <th>Resulting data type</th>
+        <th>Compatible</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>varchar(100)</code></td>
+        <td><code>varchar(200)</code></td>
+        <td><code>varchar(200)</code></td>
+        <td>✔️</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>int</code></td>
+        <td><code>varchar(200)</code></td>
+        <td>-</td>
+        <td>❌</td>
+        <td>Incompatible data types</td>
+      </tr>
+      <tr>
+        <td><code>decimal(10,0)</code></td>
+        <td><code>decimal(8,2)</code></td>
+        <td><code>decimal(12,2)</code></td>
+        <td>✔️</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>decimal(36,0)</code></td>
+        <td><code>decimal(32,4)</code></td>
+        <td><code>decimal(40,4)</code></td>
+        <td>✔️</td>
+        <td>Resulting precision is too large</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>For more information, see <a href="/yotilla-website/pages/documentation/concepts/data-types">Data Types</a>.</p>
+</div>
+
+      
+    </main>
+
+    <footer class="container border-top py-4">
+  <p class="float-end"><a href="#">Back to top</a></p>
+  <p>
+    Yotilla is a product of <a href="https://www.exasol.com" target="_blank">Exasol AG</a>  ·
+    <a href="https://www.exasol.com/de/impressum/">Imprint</a> ·
+    <a href="https://www.exasol.com/terms-and-conditions/#Yotilla">Terms & Conditions</a> ·
+    <a href="https://www.exasol.com/privacy-policy/">Privacy Policy</a> ·
+    <a class="link" data-bs-toggle="modal" data-bs-target="#modal-contact-us">Contact us</a> ·
+    <a class="icon-link" href="https://www.linkedin.com/company/yotilla"><i class="bi bi-linkedin"></i> Follow us on LinkedIn</a>
+  </p>
+</footer>
+
+
+    
+    <div class="modal fade bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal-contact-us" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Contact us</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <p class="lead">
+              Can't find what you are looking for?
+            </p>
+            <p>
+              We are just an email away!
+            </p>
+            <p>
+              Please send us a message to <a href="" id="contactMailLink">address</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="modal fade bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal-quote" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Contact sales</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <p class="lead">
+              We are happy to discuss your business needs and the sizing of your Data Warehouse!
+            </p>
+            <p>
+              Please send us a message to <a href="" id="quoteMailLink">address</a> to contact sales.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var encEmail = 'Y29udGFjdEB5b3RpbGxhLmNvbQ=='
+
+      function setEmail(tagId) {
+        const mailtoLink = document.getElementById(tagId)
+        const emailAddress = atob(encEmail)
+        mailtoLink.setAttribute("href", "mailto:".concat(emailAddress))
+        mailtoLink.innerHTML = emailAddress
+      }
+
+      setEmail("contactMailLink")
+      setEmail("quoteMailLink")
+    </script>
+    <script type="text/javascript" src="/yotilla-website/dist/app.js"></script>
+  </body>
+</html>

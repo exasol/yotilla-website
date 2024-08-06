@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yotilla - Data Flow</title>
+
+    <link rel="stylesheet" href="/yotilla-website/dist/app.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    
+    <link href="//vjs.zencdn.net/8.3.0/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <script>window.HELP_IMPROVE_VIDEOJS = false;</script>
+
+    <!-- Calendly link widget begin -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <!-- Calendly link widget end -->
+
+    
+
+
+<meta name="description" content="Automate Data Warehouses at the same pace as business changes">
+
+
+<meta property="og:site_name" content="Yotilla">
+<meta property="og:title" content="Data Flow">
+<meta property="og:description" content="Automate Data Warehouses at the same pace as business changes">
+<meta property="og:url" content="https://exasol.github.io/yotilla-website/pages/documentation/concepts/data-flow/">
+<meta property="og:locale" content="">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Flow">
+<meta name="twitter:description" content="Automate Data Warehouses at the same pace as business changes">
+
+
+<link rel="icon" href="/yotilla-website/assets/favicons/favicon.ico">
+
+
+
+  </head>
+
+  <body>
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <header class="pb-2 mb-3 border-bottom fixed-top text-bg-dark">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a href="/yotilla-website/" class="d-flex align-items-center text-dark text-decoration-none">
+          <img src="/yotilla-website/assets/images/logo-light.svg" class="yotilla-logo" alt="Yotilla Logo" />
+        </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto"><li class="nav-item">
+            <a class="nav-link"
+                href="/yotilla-website/"
+                >
+                Home
+            </a></li><li class="nav-item">
+            <a class="nav-link"
+                href="/yotilla-website/pages/product/"
+                >
+                Product
+            </a></li><li class="nav-item">
+            <a class="nav-link"
+                href="/yotilla-website/pages/pricing/"
+                >
+                Pricing
+            </a></li><li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle"
+                href="/yotilla-website/pages/documentation/"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="dropdown-177547">
+                Documentation <span class="visually-hidden">Toggle Dropdown Documentation</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown-177547">
+                <li>
+                    <a class="dropdown-item" href="/yotilla-website/pages/documentation/"><!-- Documentation-->Overview</a>
+                </li><li>
+    <a class="dropdown-item" href=" /yotilla-website/pages/documentation/concepts/">
+    Concepts
+    </a>
+</li></ul></li></ul>
+
+<a class="btn btn-outline-secondary" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marco-naetlitz-yotilla/30min'});return false;">Book a demo</a>
+
+
+</div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+    <main id="main">
+        
+<div class="container py-4">
+  <h1 id="DataTypes">Data Flow</h1>
+  <p class="lead">
+    This is an overview of the data flow when using Yotilla to build a Data Warehouse. For more information about the respective steps in this process, see The Yotilla Workflow.
+  </p>
+</div>
+
+<div class="container py-4">
+  <h2 class="border-bottom">General Concepts</h2>
+  <p>
+    The source data for the data warehouse must first be extracted from the source systems and loaded into an external staging area on the target system. For Yotilla, the external staging area on the target system will then be seen as the source system.
+  </p>
+  <p class="callout callout-info">
+    Extracting and loading data from the source systems into the external staging area cannot be done by Yotilla. This operation must be carried out by the target system, or using an ELT/ETL tool such as Keboola.
+  </p>
+  <p>
+    The next step is to load the source data that is present in the external staging area into a Yotilla-managed landing zone on the target system. This operation is done in Yotilla.
+  </p>
+  <p class="callout callout-info">
+    Yotilla does not store any data, only metadata. All data will be stored on the target system.
+  </p>
+</div>
+
+
+
+<div class="container py-4">
+  <h2 class="border-bottom">Staging Source Data on the Target System</h2>
+  <img src="/yotilla-website/assets/images/documentation/yotilla-staging-schema.png" alt="Staging on target" class="img-fluid" />
+</div>
+
+<div class="container py-4">
+
+  <h2 class="border-bottom">Persistent Staging</h2>
+  <p>
+    The Yotilla-managed landing zone is defined as a persistent staging area (PSA). This means that in case of a failure of the target system that results in loss of data, Yotilla will be able to regenerate the core layer and the data mart layer of the data warehouse, but not the landing zone itself.
+  </p>
+
+  <p class="callout callout-warning">
+    If the external staging area is defined as a PSA, the entire data warehouse can be recreated in case of failure, including the Yotilla-managed landing zone.
+  </p>
+
+  <p class="callout callout-info">
+    If the external staging area is defined as a persistent staging area (PSA), sources with large volumes of data may cause very high storage consumption on the target system.
+  </p>
+  <p>
+    Persistent staging on the external staging area must be set up and managed in the external system, it cannot be configured in Yotilla.
+  </p>
+  <p>
+    The following requirements apply when using persistent staging on the external staging area:
+  </p>
+  
+  <ul>
+    <li>Only one source attribute in each source must be marked as external stage load time.</li>
+    <li>The same data time value must be inserted into the source column marked as external stage load time in all rows of an extraction.</li>
+    <li>Data must never be removed or truncated during the extraction of source data.</li>
+    <li>For more details about configuring sources, see Edit Sources.</li>
+  </ul>
+</div>
+
+      
+    </main>
+
+    <footer class="container border-top py-4">
+  <p class="float-end"><a href="#">Back to top</a></p>
+  <p>
+    Yotilla is a product of <a href="https://www.exasol.com" target="_blank">Exasol AG</a>  ·
+    <a href="https://www.exasol.com/de/impressum/">Imprint</a> ·
+    <a href="https://www.exasol.com/terms-and-conditions/#Yotilla">Terms & Conditions</a> ·
+    <a href="https://www.exasol.com/privacy-policy/">Privacy Policy</a> ·
+    <a class="link" data-bs-toggle="modal" data-bs-target="#modal-contact-us">Contact us</a> ·
+    <a class="icon-link" href="https://www.linkedin.com/company/yotilla"><i class="bi bi-linkedin"></i> Follow us on LinkedIn</a>
+  </p>
+</footer>
+
+
+    
+    <div class="modal fade bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal-contact-us" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Contact us</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <p class="lead">
+              Can't find what you are looking for?
+            </p>
+            <p>
+              We are just an email away!
+            </p>
+            <p>
+              Please send us a message to <a href="" id="contactMailLink">address</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="modal fade bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal-quote" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">Contact sales</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <p class="lead">
+              We are happy to discuss your business needs and the sizing of your Data Warehouse!
+            </p>
+            <p>
+              Please send us a message to <a href="" id="quoteMailLink">address</a> to contact sales.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var encEmail = 'Y29udGFjdEB5b3RpbGxhLmNvbQ=='
+
+      function setEmail(tagId) {
+        const mailtoLink = document.getElementById(tagId)
+        const emailAddress = atob(encEmail)
+        mailtoLink.setAttribute("href", "mailto:".concat(emailAddress))
+        mailtoLink.innerHTML = emailAddress
+      }
+
+      setEmail("contactMailLink")
+      setEmail("quoteMailLink")
+    </script>
+    <script type="text/javascript" src="/yotilla-website/dist/app.js"></script>
+  </body>
+</html>
