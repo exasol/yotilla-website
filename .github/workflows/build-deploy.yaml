@@ -33,8 +33,8 @@ jobs:
           # We set pathprefix again via Node env, see below
         env:
           ELEVENTY_ENV: production
-          BASE_URL: "https://${{ github.event.repository.owner.name }}.github.io/"
-          PATH_PREFIX: "/${{ github.event.repository.name }}/"
+          BASE_URL: ${{ vars.BASE_URL }} #"https://${{ github.event.repository.owner.name }}.github.io/"
+          PATH_PREFIX: ${{ vars.PATH_PREFIX }} #"/${{ github.event.repository.name }}/"
       - name: Deploy to Github Pages 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
